@@ -3,7 +3,7 @@
     <version value="1"/>
     <list>
         <mapping class="comv.example.sunshine.coolweather.db.Province"/>
-        <mapping class="comv.example.sunshine.coolweather.db.city"/>
+        <mapping class="comv.example.sunshine.coolweather.db.City"/>
         <mapping class="comv.example.sunshine.coolweather.db.Country"/>
     </list>
 
