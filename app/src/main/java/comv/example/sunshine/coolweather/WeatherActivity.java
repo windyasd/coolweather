@@ -1,5 +1,6 @@
 package comv.example.sunshine.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
@@ -26,6 +27,7 @@ import java.io.IOException;
 
 import comv.example.sunshine.coolweather.gson.Forecast;
 import comv.example.sunshine.coolweather.gson.Weather;
+import comv.example.sunshine.coolweather.service.AutoUpdateService;
 import comv.example.sunshine.coolweather.util.HttpUtil;
 import comv.example.sunshine.coolweather.util.Utility;
 import okhttp3.Call;
@@ -121,7 +123,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     //根据天气id请求城市天气信息
     public void requestWeather(final String weatherId){
-        String weatherUrl="http://guolin.tech/api/weather?cityid="+weatherId+"&key=bc0418b57b2d4918819d3974ac1285d9";
+        String weatherUrl="http://guolin.tech/api/weather?cityid="+weatherId+"&key=3e771c12afd44ef59970a013c9513fdd";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -197,6 +199,9 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
+        Intent intent=new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     /**
